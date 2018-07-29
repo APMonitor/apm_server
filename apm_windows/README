@@ -1,0 +1,65 @@
+The APMonitor server is designed for large-scale optimization and accesses solvers of constrained, unconstrained, continuous, and discrete problems. Problems in linear programming, quadratic programming, integer programming, nonlinear optimization, systems of dynamic nonlinear equations, and multi-objective optimization can be solved. The platform can find optimal solutions, perform trade-off analyses, balance multiple design alternatives, and incorporate optimization methods into external modeling and analysis software. It is available for academic and commercial use. It is the same service available on the public servers but does not require an Internet connection.
+
+Windows Installation Instructions:
+
+1. Install Apache Web Server. See http://apmonitor.com/wiki/index.php/Main/APMonitorServer (Video #1).
+2. Install PHP. See http://apmonitor.com/wiki/index.php/Main/APMonitorServer (Video #2)
+3. Copy APMonitor online folder and ip.php to web root directory C:\Apache24\htdocs.
+4. Test Apache and PHP with http://127.0.0.1/ip.php (Retrieves IP address)
+5. Test APMonitor with one of the following:
+   A. Run Julia script test_julia/hs71.jl
+   B. Run MATLAB script test_matlab/hs71.m
+   C. Run Python script test_python/hs71.py
+6. Installation is successful if the following is produced:
+
+ ----------------------------------------------------------------
+ APMonitor, Version 0.7.1
+ APMonitor Optimization Suite
+ ----------------------------------------------------------------
+
+ --------- APM Model Size ------------
+ Each time step contains
+   Objects      :  0
+   Constants    :  0
+   Variables    :  5
+   Intermediates:  0
+   Connections  :  0
+   Equations    :  3
+   Residuals    :  3
+ 
+ files: rto.t0 does not exist
+ Number of state variables:    5
+ Number of total equations: -  2
+ Number of slack variables: -  1
+ ---------------------------------------
+ Degrees of freedom       :    2
+ 
+ ----------------------------------------------
+ Steady State Optimization with APOPT Solver
+ ----------------------------------------------
+ 
+ Iter    Objective  Convergence
+    0  1.67676E+01  1.87500E-01
+    1  2.04736E+01  4.88281E-02
+    2  1.75530E+01  2.17630E-02
+    3  1.70459E+01  9.65302E-03
+    4  1.70140E+01  2.04419E-04
+    5  1.70140E+01  4.22153E-08
+    6  1.70140E+01  6.48037E-13
+    7  1.70140E+01  6.48037E-13
+ Successful solution
+ 
+ ---------------------------------------------------
+ Solver         :  APOPT (v1.0)
+ Solution time  :  0.0312 sec
+ Objective      :  17.014017289155863
+ Successful solution
+ ---------------------------------------------------
+ 
+--- Results of the Optimization Problem ---
+x[1]: 1.0
+x[2]: 4.743
+x[3]: 3.82115
+x[4]: 1.379408
+
+Visit apmonitor.com for optimization and engineering course content, tutorial videos, and documentation. The server is also available in Linux. Contact support@apmonitor.com for additional information or support.

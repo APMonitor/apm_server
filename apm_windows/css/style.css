@@ -1,0 +1,136 @@
+body {
+    font: 80% Verdana, Helvetica, Arial, sans-serif;
+    background: White;
+    color: Black;
+    margin: 2em 5em 0em 5em;
+    padding: 1em;
+    text-align:left;
+    background-color: White;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: Black;
+    clear: left;
+    font: 100% Verdana, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding-left: 0.1em;
+} 
+
+h1 {
+    font-size: 150%;
+    border-bottom: none;
+    text-align: left;
+    border-bottom: 1px solid Gray;
+}
+    
+h2 {
+    font-size: 130%;
+    text-align: left;
+    border-bottom: 1px solid Gray;
+}
+
+h3 {
+    font-size: 120%;
+    text-align: left;
+    font-weight:bold;
+}
+
+h4 {
+    font-size: 110%;
+    text-align: left;
+    font-style:italic
+}
+
+p {
+    text-align: justify;
+    line-height: 1.5em;
+}
+
+a {
+    text-decoration: underline;
+    color: Black;
+}
+
+code,
+blockquote,
+pre {
+    font-size: 120%;
+    padding: 1em;
+    border: 1px solid Black;
+    color: Black;
+    background-color: #dedede;
+}
+
+#gallerycomment {
+    text-align: center;
+}
+
+#rss-desc {
+    text-align: right;
+    font-size: smaller;
+}
+
+.item-pubDate {
+    text-align: right;
+    padding: 1em;
+    font-size: smaller;
+}
+
+.item-technorati {
+    display: none;
+}
+
+li {
+    margin-bottom: 1em;
+}
+
+div .item-desc {
+    margin-bottom: 1em;
+}
+
+.shadow {
+	padding: 20px;
+	border: 1px solid #f0f0f0;
+	border-bottom: 2px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.item-title {
+    margin-bottom: 0.5em;
+}
+
+
+#menu {
+	background: #333;
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#menu li {
+	float: left;
+	font: 100% "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#menu a {
+	background: #333 url("menu/seperator.gif") bottom right no-repeat;
+	color: #ccc;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 8px 12px;
+	text-decoration: none;
+	font-weight:normal;
+}
+
+#menu a:hover {
+	background: #2580a2 url("menu/hover.gif") bottom center no-repeat;
+	color: #fff;
+	padding-bottom: 8px;
+	}
