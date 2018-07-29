@@ -1,0 +1,96 @@
+ <chart>
+   <license>LTA3H-19RJ1O.945CWK-2XOI1X0-7L</license>
+   <link>
+     <area x='30' y='8' width='30' height='10' url='http://apmonitor.com' target='_blank' text='' />
+   </link>
+ 
+   <chart_border color='000000' top_thickness='1' bottom_thickness='2' left_thickness='1' right_thickness='1' />
+ 
+   <chart_grid_h alpha='15' color='666666' thickness='1' type='dotted' />
+   <chart_grid_v alpha='15' color='666666' thickness='1' type='dotted' />
+   <chart_pref point_size='3' point_shape='circle' trend_thickness='0' trend_alpha='60' line_thickness='2' line_alpha='60'/>
+ 
+   <chart_rect x='28' y='3' width='425' height='220' positive_color='ffffff' positive_alpha='100' negative_color='ffffff' negative_alpha='100' />
+   <chart_type>scatter</chart_type>
+   <chart_label position='cursor' bold='true' size='10' color='ffffff' background_color='0000ff' alpha='70' decimals='3'/>
+ 
+   <draw>
+ 
+    <rect layer='background' x='0' y='0' width='500' height='250' fill_color='ffffff' />
+ 
+    <text color='0000ff' alpha='80' font='arial' bold='true' size='10' x='30' y='8' width='10' height='10' h_align='left' v_align='top'>A</text>
+    <text color='ff0000' alpha='80' font='arial' bold='true' size='10' x='37' y='8' width='10' height='10' h_align='left' v_align='top'>P</text>
+    <text color='000000' alpha='80' font='arial' bold='true' size='10' x='42' y='8' width='10' height='10' h_align='left' v_align='top'>M</text>
+    <text color='999999' alpha='80' font='arial' bold='true' size='8' x='350' y='244' width='100' height='10' h_align='left' v_align='top'>Sat Jul 16 17:36:49 2011</text>
+ 
+    <text color='000000' alpha='80' font='arial' bold='true' size='10' x='200' y='240' width='100' height='10' h_align='left' v_align='top'>Time (min)</text>
+    <text color='000000' alpha='80' rotation='-90' bold='true' size='10' x='0' y='150' width='100' height='10' h_align='left' v_align='top'></text>
+    <text color='000000' alpha='80' font='arial' bold='true' size='15' x='200' y='5' width='200' height='15' h_align='left' v_align='top'>cstr.ca</text>
+   </draw>
+ 
+   <legend layout='vertical' font='Arial' bold='false' size='10' color='000000' alpha='80' x='350' y='5' width='80' height='10' margin='3' fill_color='ffffff' fill_alpha='10' line_color='666666' line_alpha='100' line_thickness='0' /> 
+ 
+   <context_menu print='true' full_screen='true' save_as_bmp='true' save_as_jpeg='true' save_as_png='true' />
+ 
+ 
+   <series_color>
+           <color>0099ff</color>
+   </series_color>
+ 
+   <update url='cstr/SV(1).xml?cycle=75' delay='60' timeout='45' retry='5'/> 
+ 
+   <chart_data>
+    <row>
+     <null/>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+     <string>x</string>
+     <string>y</string>
+    </row>
+ 
+    <row>
+     <string>Model</string>
+     <number> -3.0001E+00</number>
+     <number>  9.1728E-01</number>
+     <number> -2.0000E+00</number>
+     <number>  9.1814E-01</number>
+     <number> -1.0000E+00</number>
+     <number>  9.1897E-01</number>
+     <number>  0.0000E+00</number>
+     <number>  9.1979E-01</number>
+     <number>  1.0000E+00</number>
+     <number>  9.2058E-01</number>
+     <number>  2.0000E+00</number>
+     <number>  9.2134E-01</number>
+     <number>  4.0000E+00</number>
+     <number>  9.2278E-01</number>
+     <number>  8.0000E+00</number>
+     <number>  9.2541E-01</number>
+     <number>  1.5000E+01</number>
+     <number>  9.2938E-01</number>
+     <number>  3.0000E+01</number>
+     <number>  9.3583E-01</number>
+    </row>
+ 
+   </chart_data>
+   <axis_category decimals='0' size='10' color='000000' alpha='80' mode='trim' font='arial' bold='true' skip='0' orientation='horizontal' min='-4.0000000000E+00' max='3.0000000000E+01' />
+   <axis_ticks value_ticks='false' category_ticks='true' major_thickness='1' minor_thickness='0' minor_count='1' major_color='000000' minor_color='000000' position='inside' />
+   <axis_value font='arial' bold='true' size='10' color='000000' alpha='80' prefix='' suffix='' decimals='3' separator='' mode='trim' show_min='false' min='8.9700000000E-01' max='9.5600000000E-01' />
+ </chart>
+ 
