@@ -1,11 +1,13 @@
 # Import APM package
 try:
-   from APMonitor import *
+   from APMonitor.apm import *
 except:
-   # Automatically install APMonitor
-   import pip
-   pip.main(['install','APMonitor'])
-   from APMonitor import *
+   try:
+      from pip import main as pipmain
+   except:
+      from pip._internal import main as pipmain
+   pipmain(['install','APMonitor'])
+   from APMonitor.apm import *
     
 # Solve optimization problem
 s = 'http://127.0.0.1'
