@@ -11,7 +11,7 @@
         if($p=="") { 
             $d = $ip; 
         } else { 
-            $p = trim(stripslashes(htmlspecialchars($p))); 
+            $p = trim(stripslashes(htmlspecialchars($p)));
             $d = $ip . "_" . $p; 
         } 
              
@@ -27,6 +27,9 @@
         // get line for addition 
         // don't remove right-side spaces or carriage returns   
         $add = $_REQUEST['a'];    
+        // remove double and single quotes 
+        //$add = str_replace("\"", "", $add);    
+        //$add = str_replace("'", "", $add);    
             
         // filename and absolute path    
         $fn = $d . "/" . $d . ".apm";    
@@ -36,23 +39,26 @@
         } else {    
                 $handle = fopen ($fn, 'a');     
         }            
-        if (strtolower($add)=="solve") {     
-                //$solve = "! Solve command issued at " . date("D j M Y G:i:s");     
-                //fwrite ($handle, "\n".$solve);     
-                fclose($handle);
+
+        if (strtolower($add)=="solve") {    
+                //$solve = "! Solve command issued";
+                //fwrite ($handle, "\n".$solve);    
+                fclose($handle);    
+
                 // solve    
-                chdir($path);
-                $solve = '..\apm ' . $d;                    
-                //echo $solve;     
-                while (@ ob_end_flush()); // end all output buffers if any
+                chdir($d);
+                $solve = 'apm ' . $d;    
+                echo $solve . ' <br>';
+	        while (@ ob_end_flush()); // end all output buffers (if any)
                 $proc = popen($solve, 'r');
-                echo '<pre>';
+                echo "<pre>";    
                 while (!feof($proc))
-                {
-                    echo fread($proc, 4096);
-                    @ flush();
-                }
-                echo '</pre>';        
+		{
+		  echo fread($proc, 4096);
+                  @ flush();
+	        }
+                //echo passthru("$solve");    
+                echo "</pre>";    
         } elseif (strtolower($add)=="clear all") {    
                 // close apm file    
                 fclose($handle);
@@ -79,7 +85,19 @@
                 //$clear = "! Cleared CSV file contents";    
                 //fwrite ($handle, "\n".$clear);    
                 fclose($handle);    
-                //echo "Cleared CSV file";    
+                echo "Cleared CSV file";
+        } elseif  (strtolower($add)=="clear meas") {    
+                // clear file contents by opening in write mode    
+                $fn_csv = $d . "/measurements.dbs";  
+                $meas_file = fopen ($fn_csv, 'w');     
+                // write a space to the file to clear contents  
+                fwrite ($meas_file, " ");  
+                fclose ($meas_file);  
+                  
+                //$clear = "! Cleared measurements.dbs file contents";    
+                //fwrite ($handle, "\n".$clear);    
+                fclose($handle);    
+                echo "Cleared measurements.dbs file";    
         } elseif (strtolower(substr($add, 0, 7))=="option ") {    
                 $option = trim(substr($add,7)); // starting at 7th position - extract option    
                 $fn_opt = $d . "/overrides.dbs";    
@@ -91,10 +109,18 @@
                 fwrite ($overrides, "\n".$option);    
                 fclose($overrides);    
                 echo "Successfully added option: " . $option;    
-
-                // Log addition to APM file    
-                //$opt_log = "! Added option $option";    
-                //fwrite ($handle, "\n".$opt_log);    
+                fclose($handle);    
+        } elseif (strtolower(substr($add, 0, 5))=="meas ") {    
+                $option = trim(substr($add,5)); // starting at 5th position - extract option    
+                $fn_opt = $d . "/measurements.dbs";    
+                if ( !file_exists($fn_opt)) {    
+                    $meas = fopen ($fn_opt, 'w');     
+                } else {    
+                    $meas = fopen ($fn_opt, 'a');     
+                }            
+                fwrite ($meas, "\n".$option);    
+                fclose($meas);    
+                echo "Successfully added meas: " . $meas;    
                 fclose($handle);    
         } elseif (strtolower(substr($add, 0, 5))=="info ") {    
                 $info = trim(substr($add,5)); // starting at 5th position - extract info file addition    
@@ -144,7 +170,7 @@
                 // don't log data flow to APM file   
                 fclose($handle);  
         } elseif (strtolower(substr($add, 0, 4))=="csv ") {    
-                $csv = rtrim(substr($add,4)); // starting at 5th position - extract 'csv ' file addition    
+	        $csv = rtrim(substr($add,4)); // starting at 5th position - extract 'csv ' file addition    
                 $fn_csv = $d . "/" . $d . ".csv";    
                 if ( !file_exists($fn_csv)) {    
                     $csv_file = fopen ($fn_csv, 'w');     
@@ -171,4 +197,4 @@
                 echo "Successfully added line: " . $add;    
         }    
 
-?>  
+?>
