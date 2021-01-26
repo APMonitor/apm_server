@@ -11,7 +11,6 @@
         if($p=="") { 
             $d = $ip; 
         } else { 
-            #$p = htmlspecialchars(stripslashes(trim($p))); 
             $p = trim(stripslashes(htmlspecialchars($p)));
             $d = $ip . "_" . $p; 
         } 
@@ -42,13 +41,13 @@
         }            
 
         if (strtolower($add)=="solve") {    
-                $solve = "! Solve command issued";
-                fwrite ($handle, "\n".$solve);    
+                //$solve = "! Solve command issued";
+                //fwrite ($handle, "\n".$solve);    
                 fclose($handle);    
 
                 // solve    
                 chdir($d);
-                $solve = 'apmonitor ' . $d;    
+                $solve = 'apm ' . $d;    
                 echo $solve . ' <br>';
 	        while (@ ob_end_flush()); // end all output buffers (if any)
                 $proc = popen($solve, 'r');
@@ -83,10 +82,22 @@
                 fwrite ($csv_file, " ");  
                 fclose ($csv_file);  
                   
-                $clear = "! Cleared CSV file contents";    
-                fwrite ($handle, "\n".$clear);    
+                //$clear = "! Cleared CSV file contents";    
+                //fwrite ($handle, "\n".$clear);    
                 fclose($handle);    
-                echo "Cleared CSV file";    
+                echo "Cleared CSV file";
+        } elseif  (strtolower($add)=="clear meas") {    
+                // clear file contents by opening in write mode    
+                $fn_csv = $d . "/measurements.dbs";  
+                $meas_file = fopen ($fn_csv, 'w');     
+                // write a space to the file to clear contents  
+                fwrite ($meas_file, " ");  
+                fclose ($meas_file);  
+                  
+                //$clear = "! Cleared measurements.dbs file contents";    
+                //fwrite ($handle, "\n".$clear);    
+                fclose($handle);    
+                echo "Cleared measurements.dbs file";    
         } elseif (strtolower(substr($add, 0, 7))=="option ") {    
                 $option = trim(substr($add,7)); // starting at 7th position - extract option    
                 $fn_opt = $d . "/overrides.dbs";    
@@ -98,10 +109,18 @@
                 fwrite ($overrides, "\n".$option);    
                 fclose($overrides);    
                 echo "Successfully added option: " . $option;    
-
-                // Log addition to APM file    
-                $opt_log = "! Added option $option";    
-                fwrite ($handle, "\n".$opt_log);    
+                fclose($handle);    
+        } elseif (strtolower(substr($add, 0, 5))=="meas ") {    
+                $option = trim(substr($add,5)); // starting at 5th position - extract option    
+                $fn_opt = $d . "/measurements.dbs";    
+                if ( !file_exists($fn_opt)) {    
+                    $meas = fopen ($fn_opt, 'w');     
+                } else {    
+                    $meas = fopen ($fn_opt, 'a');     
+                }            
+                fwrite ($meas, "\n".$option);    
+                fclose($meas);    
+                echo "Successfully added meas: " . $meas;    
                 fclose($handle);    
         } elseif (strtolower(substr($add, 0, 5))=="info ") {    
                 $info = trim(substr($add,5)); // starting at 5th position - extract info file addition    
@@ -116,8 +135,8 @@
                 echo "Successfully added variable classification: " . $info;    
 
                 // Log addition to APM file    
-                $opt_log = "! Added variable classification $info";    
-                fwrite ($handle, "\n".$opt_log);    
+                //$opt_log = "! Added variable classification $info";    
+                //fwrite ($handle, "\n".$opt_log);    
                 fclose($handle);   
         } elseif (strtolower(substr($add, 0, 6))=="ss.t0 ") {    
                 $ss_t0 = substr($add,6); // extract ss.t0 file addition    
@@ -132,8 +151,8 @@
                 echo "Successfully added variable classification: " . $ss_t0;    
 
                 // Log addition to APM file    
-                $opt_log = "! Added steady state value $ss_t0";    
-                fwrite ($handle, "\n".$opt_log);    
+                //$opt_log = "! Added steady state value $ss_t0";    
+                //fwrite ($handle, "\n".$opt_log);    
                 fclose($handle);   
         } elseif (strtolower(substr($add, 0, 5))=="csva ") {    
                 $csv = substr($add,5); // starting at 6th position - extract csv file addition    
@@ -178,4 +197,4 @@
                 echo "Successfully added line: " . $add;    
         }    
 
-?>  
+?>
