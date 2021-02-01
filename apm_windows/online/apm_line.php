@@ -47,7 +47,7 @@
 
                 // solve    
                 chdir($d);
-                $solve = 'apm ' . $d;    
+                $solve = 'apm.exe ' . $d;    
                 echo $solve . ' <br>';
 	        while (@ ob_end_flush()); // end all output buffers (if any)
                 $proc = popen($solve, 'r');
